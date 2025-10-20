@@ -13,9 +13,13 @@ public class Key : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+	// check if we collide with the player
         if (other.CompareTag("Player")) {
+	//  sets game over to true
             gameManager.gameOver = true;
+	//  creates a shockwave
             Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
+	//  destroys keys
             Destroy(gameObject, 0.1f);
         }
     }
