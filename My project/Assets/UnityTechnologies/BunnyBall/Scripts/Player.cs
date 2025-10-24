@@ -7,9 +7,15 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public Transform cameraTransform;
     public GameManager gameManager;
+    public float speed = 1f;
+    public int jumpForce = 100;
+    private int x = 0;
 
     void Update()
     {
+        x = x + 1;
+        //Debug.Log("Hello" + x);
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 forward = cameraTransform.forward;
@@ -19,7 +25,13 @@ public class Player : MonoBehaviour
         forward.Normalize();
         right.Normalize();
         Vector3 direction = forward * moveVertical + right * moveHorizontal;
-        rb.AddForce(direction * 5);
+        rb.AddForce(direction * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space was pressed");
+            rb.AddForce(Vector3.up * 400);
+        }
     }
 
 }
