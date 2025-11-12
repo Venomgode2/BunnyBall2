@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int jumpForce = 100;
     private int x = 0;
     private bool isGrounded = false;
+    private bool doubleJump = false;
 
     void Update()
     {
@@ -30,9 +31,16 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
+
             Debug.Log("Space was pressed");
             rb.AddForce(Vector3.up * 400);
-
+            doubleJump = true;
+        }
+       
+        if(isGrounded == false && doubleJump == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce);
+            doubleJump = false;
         }
     }
 

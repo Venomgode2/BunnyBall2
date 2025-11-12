@@ -1,20 +1,24 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public string level1;
+    public string level2;
+    public string level3;
+
+    public void Loadlevel1() {
+        SceneManager.LoadScene(level1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Loadlevel2()
     {
-        
+        SceneManager.LoadScene(level2);
     }
+
+    public void Loadlevel3()
+    {
+        SceneManager.LoadScene(level3);
+    }
+        
 }
-
-public void LoadLevel1()
-
-SceneManager.LoadScene(LoadLevel1().name);
